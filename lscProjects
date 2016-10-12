@@ -1,0 +1,122 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Creation of wooden and painted toy soldiers for winter Main Street decorations"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.55981492996216,
+          38.209936072434196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Beautification/landscaping of the outdoor garden at Georgetown Community Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.56102728843689,
+          38.18674938816819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Construction and installation of park benches at Yuko-En on the Elkhorn"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.56498086452484,
+          38.21930139874194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Planting trees at Scott County Animal Shelter"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.57436323165894,
+          38.238070569929306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Beautification/landscaping of Senior Citizens Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5683228969574,
+          38.222837317839556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Beautification/landscaping of Maple Grove Cemetery"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.54003095626831,
+          38.21729524666385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Flooring installed/painting multi-purpose room at Quest Farms"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.53890442848206,
+          38.21950369672173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Design and creation of a Secret Garden at The Gathering Place Mission House"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.55477237701416,
+          38.21293293938841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Construction of picnic tables and signage for Royal Spring Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.56189632415771,
+          38.208835925752815
+        ]
+      }
+    }
+  ]
+}
