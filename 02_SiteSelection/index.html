@@ -57,8 +57,10 @@
     <div id="basemaps-wrapper" class="leaflet-bar">
         Basemaps:
         <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
-            <option value="Spring">Street Map</option>
-            <option value="http://1.aerial.maps.cit.api.here.com/maptile/2.1/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?app_id=jHW2qixQHBjQkbewy0cH&amp;app_code=oO4iig4GLocEZTJb4NdUTg&amp;lg=eng">Imagery + Streets</option>
+            <option value="Spring">Street Map (Vector Tiles)</option>
+            <option value="http://gscpcgis-tileify-ags-proxy.herokuapp.com/tiles/{z}/{x}/{y}?url=http%3A%2F%2Fgis.gscplanning.com%2Farcgis%2Frest%2Fservices%2Fbasemaps%2Fgscbase_streets%2FMapServer&transparent=true">GSCPC Streets (AGS-Proxy)</option>
+            <option value="http://gscpcgis-tileify-ags-proxy.herokuapp.com/tiles/{z}/{x}/{y}?url=http%3A%2F%2Fgis.gscplanning.com%2Farcgis%2Frest%2Fservices%2Fbasemaps%2Fgscbase_bw%2FMapServer&transparent=true">GSCPC B&amp;W (AGS-Proxy)</option>
+            <option value="http://1.aerial.maps.cit.api.here.com/maptile/2.1/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?app_id=jHW2qixQHBjQkbewy0cH&amp;app_code=oO4iig4GLocEZTJb4NdUTg&amp;lg=eng">Imagery + Streets (Slippy Tiles)</option>
         </select>
     </div>
 
@@ -96,6 +98,16 @@
             var basemap = basemaps.value;
             setBasemap(basemap);
         }
+        // Pull in Georgetown City Limits from GSCPC ArcGIS Server using esri-leaflet
+        L.esri.featureLayer({
+            url: 'http://gis.gscplanning.com/arcgis/rest/services/CityLimits/MapServer/0',
+            style: {
+                color: "#f1c40f",
+                weight: 2,
+                fillOpacity: 0,
+                dashArray: "5,5"
+            }
+        }).addTo(map)
 
         // LSC Sites and buffers
         // Load site geojson from AGOL using query that returns GeoJSON
@@ -130,6 +142,7 @@
             var buffer25 = turf.buffer(data, 0.25, unit);
             var buffer50 = turf.buffer(data, 0.5, unit);
             var buffer100 = turf.buffer(data, 1, unit);
+            console.log(JSON.stringify(buffer50))
 
             // Style buffers
             function buffStyle(feature) {
