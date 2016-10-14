@@ -1,0 +1,48 @@
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Simple FeatureLayer</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <!-- Load Leaflet from CDN-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.0/dist/leaflet-src.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <!-- Load Esri Leaflet from CDN -->
+  <!-- <script src="https://unpkg.com/esri-leaflet@2.0.3"></script> -->
+
+  <script src="https://npmcdn.com/@turf/turf@3.5.1/turf.min.js"></script>
+
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+  var map = L.map('map')
+  var basemap = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  	maxZoom: 19,
+  	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  map.setView([38.201851,-84.548979], 14);
+
+  // Leaflet w/ external GeoJSON
+  var promise = $.getJSON("http://services1.arcgis.com/dpmGqj7FxlwlvK0y/arcgis/rest/services/lscProjects/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=&units=esriSRUnit_Meter&outFields=&returnGeometry=true&multipatchOption=&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&quantizationParameters=&sqlFormat=none&f=pgeojson&token=");
+  promise.then(function(data){
+    var lscProjects = L.geoJson(data);
+    lscProjects.addTo(map);
+    var unit = 'miles';
+    var buffered = turf.buffer(data, 0.5, unit);
+    L.geoJson(buffered).addTo(map);
+  })
+
+
+</script>
+
+</body>
+</html>
