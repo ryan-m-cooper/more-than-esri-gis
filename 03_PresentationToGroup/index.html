@@ -69,15 +69,44 @@
             <section data-place="sp1">
                 <h2>Scroggin Park</h2>
                 <p>The 1/2 mile buffer around each project limited the possible areas we could look for a project in. Some areas are well-off neighborhoods. Others are industrial or commercial areas. However, one spot stuck out to us: Scroggin Park. Scroggin Park is run by the Georgetown Housing Authority and provides public housing for low-income residents.</p>
-                <img src="./img/GHAEntrance.PNG" alt="">
-
+               <div class="row">
+                  <div class="col-sm-12 col-md-12 img-grid">
+                     <img src="./img/GHAEntrance.PNG" alt="">
+                     <figcaption>Entrance to Scroggin Park (Courtesy Google Street View)</figcaption>
+                  </div>
+               </div>
             </section>
 
-            <section  data-place="kristiansand">
-                <h2>Kristiansand</h2>
-                <p>Etiam nec vulputate tellus. Mauris varius aliquam congue. Etiam ac dolor sed felis pellentesque iaculis. In hac habitasse platea dictumst. Vivamus bibendum, nisi id tempor fringilla, augue velit posuere eros, vel mollis massa nisl eget mi. In sit amet libero quis ipsum bibendum pulvinar. In hac habitasse platea dictumst. Vestibulum congue justo erat, a vulputate nibh aliquet vitae. Morbi accumsan lobortis diam, ut aliquet est venenatis sit amet.</p>
-                <p>Vestibulum eleifend varius nisi vitae mattis. Proin egestas diam eu justo porta feugiat. Phasellus nec nisl congue elit mattis facilisis. Sed semper lorem in elementum facilisis. Mauris malesuada at felis sit amet commodo. Cras egestas nec metus nec aliquet. Suspendisse at feugiat elit, at tincidunt odio. Etiam ac magna justo. Nunc eget congue augue. Mauris eget arcu non purus rutrum accumsan vitae condimentum ligula. Sed blandit interdum neque, in adipiscing ligula placerat vel.</p>
-                <p>In at molestie nulla, at molestie nulla. Donec ut vehicula velit, sed scelerisque sapien. Proin sodales laoreet dapibus. Phasellus in tristique orci. Morbi iaculis vestibulum magna, et fermentum lacus ornare non. Quisque malesuada et dolor ac mollis. Duis egestas ullamcorper dui, vel rhoncus nisl congue ut. Nunc feugiat velit at congue congue. Suspendisse sapien ligula, gravida non rhoncus ut, porta ut ipsum. In urna orci, scelerisque non sem et, condimentum feugiat lorem. Nam nec nunc nisl.</p>
+            <section  data-place="spBball">
+                <h2>Field Inspection: Basketball Court</h2>
+                <p>James went out into the field to gather some information about Scroggin Park and to see if there might be some project possibilities. One element that stood out was the basketball court.</p>
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 img-grid">
+                     <img src="./img/ScrogginsParkBasketballCourt.jpg" alt="">
+                     <figcaption>Scroggin Park Basketball Court</figcaption>
+                  </div>
+               </div>
+                <p>Others with more knowledge of the park have said the basketball court is a popular place for local kids to play basketball. The court is in decent shape, but there is grass growing in some cracks in the pavement. The lines are also a bit faded. The goals have new nets, but one of them is pulling away from the ground!</p>
+                <div class="row">
+                  <div class="col-sm-8 col-md-8 img-grid">
+                     <img src="./img/ScrogginsParkBasketballGoal.jpg" alt="">
+                     <figcaption>Scroggin Park Basketball goal</figcaption>
+                  </div>
+                  <div class="col-sm-4 col-md-4 img-grid">
+                     <img src="./img/ScrogginsParkBasketballGoalBackside2.jpg" alt="">
+                     <figcaption>Scroggin Park basketball goal coming out of the ground</figcaption>
+                  </div>
+               </div>
+            </section>
+
+            <section data-place="spField">
+               <h2>Field Inspection: Open Field</h2>
+               <div class="row">
+                 <div class="col-sm-12 col-md-12 img-grid">
+                    <img src="./img/ScrogginsParkBasketballCourtandField.jpg" alt="">
+                    <figcaption>Open field in the center of Scroggin Park looking north towards the basketball court</figcaption>
+                 </div>
+              </div>
             </section>
 
         </div>
@@ -108,17 +137,21 @@
              maxNativeZoom: 17,
              maxZoom: 19,
              tms: true
+          }),
+          'contours': L.tileLayer('data/scContours/{z}/{x}/{y}', {
+             minZoom: 16,
+             maxZoom: 20,
+             tms: true
           })
         };
 
         var markers = {
            pastprojects:{lat:38.209894, lon:-84.559815, zoom:14, layer:layers['buff50']},
-           sp1: {lat:38.194735, lon:-84.553571, zoom:16, layer:layers['spol']}
-            // spShelter:
-            // spBball:
-            // spField:
+           sp1: {lat:38.194735, lon:-84.553571, zoom:16, layer:layers['spol']},
+           spBball: {lat:38.19529981033007, lon:-84.55374240875244, zoom:19, layer:layers['spol']},
+           spField: {lat:38.19495621065304, lon:-84.55362975597382, zoom:19, layer:layers['contours']}
+           // spShelter:
             // littleLibrary:
-
         };
 
         $('.main').storymap({
@@ -136,7 +169,8 @@
          	app_id: 'apEsCNqTKqKkWPKQjSOp',
          	app_code: 'RxgLFEkCalwkRVuRSsMomg',
          	base: 'aerial',
-         	maxZoom: 20,
+         	maxNativeZoom: 20,
+            maxZoom: 22,
          	type: 'maptile',
          	language: 'eng',
          	format: 'png8',
