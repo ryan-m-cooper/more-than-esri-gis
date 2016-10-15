@@ -57,10 +57,10 @@
     <div id="basemaps-wrapper" class="leaflet-bar">
         Basemaps:
         <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
-            <option value="Spring">Street Map (Vector Tiles)</option>
-            <option value="http://gscpcgis-tileify-ags-proxy.herokuapp.com/tiles/{z}/{x}/{y}?url=http%3A%2F%2Fgis.gscplanning.com%2Farcgis%2Frest%2Fservices%2Fbasemaps%2Fgscbase_streets%2FMapServer&transparent=true">GSCPC Streets (AGS-Proxy)</option>
-            <option value="http://gscpcgis-tileify-ags-proxy.herokuapp.com/tiles/{z}/{x}/{y}?url=http%3A%2F%2Fgis.gscplanning.com%2Farcgis%2Frest%2Fservices%2Fbasemaps%2Fgscbase_bw%2FMapServer&transparent=true">GSCPC B&amp;W (AGS-Proxy)</option>
-            <option value="http://1.aerial.maps.cit.api.here.com/maptile/2.1/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?app_id=jHW2qixQHBjQkbewy0cH&amp;app_code=oO4iig4GLocEZTJb4NdUTg&amp;lg=eng">Imagery + Streets (Slippy Tiles)</option>
+            <option data-tile='esriVT' value="Spring">Street Map (Vector Tiles)</option>
+            <option data-tile='ags' value="http://gis.gscplanning.com/arcgis/rest/services/basemaps/gscbase_streets/MapServer">GSCPC Streets (ArcGIS Server)</option>
+            <option data-tile='tms' value="http://gscpcgis-tileify-ags-proxy.herokuapp.com/tiles/{z}/{x}/{y}?url=http%3A%2F%2Fgis.gscplanning.com%2Farcgis%2Frest%2Fservices%2Fbasemaps%2Fgscbase_bw%2FMapServer&transparent=true">GSCPC B&amp;W (AGS-Proxy)</option>
+            <option data-tile='tms' value="http://1.aerial.maps.cit.api.here.com/maptile/2.1/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?app_id=jHW2qixQHBjQkbewy0cH&amp;app_code=oO4iig4GLocEZTJb4NdUTg&amp;lg=eng">Imagery + Streets (HERE)</option>
         </select>
     </div>
 
@@ -72,21 +72,32 @@
             zoom: 14
         });
 
+        // Create pane for city limits
+        map.createPane('cityLimitsPane');
+        map.getPane('cityLimitsPane').style.zIndex = 200;
+        map.getPane('cityLimitsPane').style.pointerEvents = 'none';
         // Create pane for buffers below marker
         map.createPane('bufferPane');
-        map.getPane('bufferPane').style.zIndex = 200;
+        map.getPane('bufferPane').style.zIndex = 201;
         map.getPane('bufferPane').style.pointerEvents = 'none';
 
         // Basemaps
         var layer = L.esri.Vector.basemap('Spring').addTo(map);
 
-        // Switch between Esri Vector Tiles and a regular TMS
         function setBasemap(basemap) {
             if (layer) {
                 map.removeLayer(layer);
-                if (basemaps.value == "Spring") {
+                var listIndex = document.getElementById("basemaps").selectedIndex;
+                console.log(listIndex)
+                var newBasemap = document.getElementsByTagName("option")[listIndex].dataset.tile;
+                console.log('newBasemap')
+                if (newBasemap == "esriVT") {
                     layer = L.esri.Vector.basemap(basemap);
-                } else {
+                } else if (newBasemap == "ags") {
+                  layer = L.esri.tiledMapLayer({
+                    url: basemap
+                  });
+                } else if (newBasemap == "tms"){
                     layer = L.tileLayer(basemap);
                 }
                 map.addLayer(layer);
@@ -105,7 +116,8 @@
                 color: "#f1c40f",
                 weight: 2,
                 fillOpacity: 0,
-                dashArray: "5,5"
+                dashArray: "5,5",
+                pane: 'cityLimitsPane'
             }
         }).addTo(map)
 
@@ -142,7 +154,7 @@
             var buffer25 = turf.buffer(data, 0.25, unit);
             var buffer50 = turf.buffer(data, 0.5, unit);
             var buffer100 = turf.buffer(data, 1, unit);
-            console.log(JSON.stringify(buffer50))
+            // console.log(JSON.stringify(buffer50))
 
             // Style buffers
             function buffStyle(feature) {
