@@ -88,9 +88,7 @@
             if (layer) {
                 map.removeLayer(layer);
                 var listIndex = document.getElementById("basemaps").selectedIndex;
-                console.log(listIndex)
                 var newBasemap = document.getElementsByTagName("option")[listIndex].dataset.tile;
-                console.log('newBasemap')
                 if (newBasemap == "esriVT") {
                     layer = L.esri.Vector.basemap(basemap);
                 } else if (newBasemap == "ags") {
