@@ -33,7 +33,7 @@
             <h1 class="page-header">Leadership Scott County 2016-2017: The Case for Scroggin Park</h1>
 
             <section data-place="overview">
-                <p>All Leadership Scott County classes are tasked with completing a project in the community. The 2016-2017 class is no different. This presentation walks through the process of nailing down a project in Scroggin Park.</p>
+                <p>All Leadership Scott County classes are tasked with completing a project in the community. The 2016-2017 class is no different. We the Project Research Committee have done some research to help narrow down a site for ideas for our project. Here we outline our research, analysis, and recommendation.</p>
                 <img src="./img/LSCGroup1.jpg" alt="">
             </section>
 
@@ -53,12 +53,12 @@
                      <figcaption>A plaque at Royal Spring Park recognizing the work of the 2015 LSC class</figcaption>
                   </div>
                </div>
-                <p>Past Leadership Scott County have done projects throughout Georgetown. We wanted to see if we could do a project in an area where there hasn't been much work done by Leadership Scott County. Do figure this out, we found data that showed the locations of previous Leadership Scott County projects. We generated buffers of various distances around the project locations to try and determine if there were areas underserved by previous LSC projects.</p>
+                <p>Past Leadership Scott County have done projects throughout Georgetown. We wanted to see if we could do a project in an area where there hasn't been much work done by Leadership Scott County. To figure this out, we found data that showed the locations of previous Leadership Scott County projects. We generated buffers of various distances around the project locations to try and determine if there were areas underserved by previous LSC projects.</p>
                <div class="row">
                   <div class="col-sm-2 col-md-2"></div>
                   <div class="col-sm-8 col-md-8 img-grid">
                      <img src="./img/buffersAnimation.gif" alt="">
-                     <figcaption>Animation of buffers around past LSC Projects</figcaption>
+                     <figcaption>Animation of buffers around past LSC Projects (<a href="http://ryan-m-cooper.com/more-than-esri-gis/02_SiteSelection/" target="_blank">View map</a>)</figcaption>
                   </div>
                   <div class="col-sm-2 col-md-2 img-grid"></div>
                </div>
@@ -68,7 +68,7 @@
 
             <section data-place="sp1">
                 <h2>Scroggin Park</h2>
-                <p>The 1/2 mile buffer around each project limited the possible areas we could look for a project in. Some areas are well-off neighborhoods. Others are industrial or commercial areas. However, one spot stuck out to us: Scroggin Park. Scroggin Park is run by the Georgetown Housing Authority and provides public housing for low-income residents.</p>
+                <p>The 1/2 mile buffer around each project limited the possible areas we could look for a project in. Examining what was left, some areas are well-off neighborhoods while others are industrial or commercial areas. However, one spot stuck out to us: Scroggin Park. Scroggin Park is run by the Georgetown Housing Authority and provides public housing for low-income residents.</p>
                <div class="row">
                   <div class="col-sm-12 col-md-12 img-grid">
                      <img src="./img/GHAEntrance.PNG" alt="">
@@ -101,12 +101,37 @@
 
             <section data-place="spField">
                <h2>Field Inspection: Open Field</h2>
+               <p>South of the basketball fields is an open field. It is relatively flat and looks to be another great area for children to play and community members to gather.</p>
                <div class="row">
                  <div class="col-sm-12 col-md-12 img-grid">
                     <img src="./img/ScrogginsParkBasketballCourtandField.jpg" alt="">
                     <figcaption>Open field in the center of Scroggin Park looking north towards the basketball court</figcaption>
                  </div>
               </div>
+            </section>
+
+            <section data-place="spShelter">
+              <h2>Field Inspection: Shelter</h2>
+              <p>There is a really nice shelter with picnic tables. A great place for people to gather and create community!</p>
+              <div class="row">
+                 <div class="col-sm-12 col-md-12 img-grid">
+                    <img src="./img/ScrogginsParkShelter.jpg" alt="">
+                    <figcaption>Scroggin Park Shelter</figcaption>
+                 </div>
+                 <div class="col-sm-6 col-md-6 img-grid">
+                    <img src="./img/ScrogginsParkShelterUnderneath.jpg" alt="">
+                    <figcaption>Ceiling of the Scroggin Park Shelter</figcaption>
+                 </div>
+                 <div class="col-sm-6 col-md-6 img-grid">
+                    <img src="./img/ScrogginsParkTables.jpg" alt="">
+                    <figcaption>Picnic tables at the Scroggin Park Shelter</figcaption>
+                 </div>
+              </div>
+            </section>
+
+            <section data-place="recommend">
+              <h2>Recommendation: Basketball Court Maintenance at Scroggin Park</h2>
+              <p>Scroggin Park has a lot of good things going for it. It is centrally located within the Scorggin Park Neighborhood, has a nice field, and there's a great shelter with picnic tables. While some work has been done to maintain the basketball court, it doesn't quite match up to the quality of other parts of the park. We recommend that our group focus our efforts on sprucing up the basketball court in Scroggin Park in order to make it a safe, fun community facility.</p>
             </section>
 
         </div>
@@ -148,10 +173,10 @@
         var markers = {
            pastprojects:{lat:38.209894, lon:-84.559815, zoom:14, layer:layers['buff50']},
            sp1: {lat:38.194735, lon:-84.553571, zoom:16, layer:layers['spol']},
-           spBball: {lat:38.19529981033007, lon:-84.55374240875244, zoom:19, layer:layers['spol']},
-           spField: {lat:38.19495621065304, lon:-84.55362975597382, zoom:19, layer:layers['contours']}
-           // spShelter:
-            // littleLibrary:
+           spBball: {lat:38.19529981033007, lon:-84.55374240875244, zoom:19},
+           spField: {lat:38.19495621065304, lon:-84.55362975597382, zoom:19, layer:layers['contours']},
+           spShelter: {lat:38.19468849689758, lon:-84.55361902713776, zoom:19},
+           recommend: {lat:38.19529981033007, lon:-84.55374240875244, zoom:16, layer:layers['spol']}
         };
 
         $('.main').storymap({
