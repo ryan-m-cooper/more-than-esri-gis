@@ -1,4 +1,8 @@
-# Toward a More-Than-ESRI-GIS
+# Toward a More-Than-ESRI GIS
+
+- 10/18/2016
+- Covington, KY
+- 2016 Kentucky Association of Mapping Professionals GIS Conference
 
 ## Abstract
 > Esri has and continues to be the leader in the market of geospatial technology. However, the
